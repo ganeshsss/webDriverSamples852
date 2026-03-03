@@ -1,0 +1,31 @@
+public String readObjPath(String objName)  {
+			String objPath ="";
+			String path = System.getProperty("user.dir") + "/src/test/resources/testData/loginRepo.xlsx";
+			
+			FileInputStream fin;
+			XSSFWorkbook workbook = null;
+			
+			try {
+				fin = new FileInputStream(path);
+				workbook = new XSSFWorkbook(fin);
+				
+			}
+			catch (FileNotFoundException e) {
+				e.printStackTrace();
+				
+			}
+			catch(IOException e) {
+				e.printStackTrace();
+			}
+            		
+		   XSSFSheet loginSheet = workbook.getSheet("loginPage");
+		   int numRows = loginSheet.getLastRowNum();
+		   for(int i=1; i<=numRows; i++) {
+			   XSSFRow row = loginSheet.getRow(i);
+			   if(row.getCell(0).getStringCellValue().equalsIgnoreCase(objName)) {
+				   objPath = row.getCell(1).getStringCellValue();
+			   }
+		   }
+		   return objPath;
+		
+		}

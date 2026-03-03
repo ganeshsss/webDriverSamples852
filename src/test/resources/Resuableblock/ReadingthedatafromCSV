@@ -1,0 +1,18 @@
+@DataProvider(name="loginData")
+		public Object[][] getData() throws CsvValidationException, IOException {
+		    String path = System.getProperty("user.dir") + "/src/test/resources/testData/loginData.csv";
+		    CSVReader reader = new CSVReader(new FileReader(path));
+		    
+		    String[] cols; // Corrected array declaration
+		    ArrayList<Object[]> dataList = new ArrayList<Object[]>(); // Explicitly store Object arrays
+		    
+		    // Corrected the assignment inside the while condition
+		    while ((cols = reader.readNext()) != null) {
+		        Object[] record = { cols[0], cols[1] };
+		        dataList.add(record);
+		    }
+		    reader.close();
+		    
+		    // Fixed the syntax for toArray
+		    return dataList.toArray(new Object[dataList.size()][]);
+		}

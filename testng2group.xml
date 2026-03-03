@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SampleSuite">
+	<parameter name="browser" value="chrome"/>
+  <test thread-count="5" name="ModuleOneTest">
+	  <groups>
+		  <define name="PhaseOne">
+			  <include name="SmokeTest"></include>
+			  
+		  </define>
+		<run>
+			<include name="PhaseOne"></include>
+		</run>  
+	  </groups>
+    <classes>
+     <!--  <class name="testScripts.Automation_Practice"/> -->
+      <!-- <class name="testScripts.FirstSampleTest"/>-->
+      <class name="testScripts.is_displayed"/>
+    </classes>
+  </test> <!-- ModuleOneTest -->
+</suite> <!-- SampleSuite -->
